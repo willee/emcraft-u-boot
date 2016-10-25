@@ -243,6 +243,22 @@
  * Serial console configuration
  */
 #define CONFIG_STM32_USART_CONSOLE
+#define CONFIG_STM32_USART_CONSOLE_VCP
+
+#if defined(CONFIG_STM32_USART_CONSOLE_VCP)
+
+/* 
+* USART1, TX PA.9, RX PB.7 
+*/
+#define CONFIG_STM32_USART_PORT 1               /* USART1 */
+
+#define CONFIG_STM32_USART_TX_IO_PORT   0       /* PORTA */
+#define CONFIG_STM32_USART_TX_IO_PIN    9       /* GPIO9 */
+
+#define CONFIG_STM32_USART_RX_IO_PORT   1       /* PORTB */
+#define CONFIG_STM32_USART_RX_IO_PIN    7       /* GPIO7 */
+
+#else
 
 /*
  * USART6, TX PC.6, RX PC.7
@@ -254,6 +270,8 @@
 
 #define CONFIG_STM32_USART_RX_IO_PORT	2	/* PORTC */
 #define CONFIG_STM32_USART_RX_IO_PIN	7	/* GPIO7 */
+
+#endif
 
 #define CONFIG_BAUDRATE			115200
 #define CONFIG_SYS_BAUDRATE_TABLE	{ 9600, 19200, 38400, 57600, 115200 }
@@ -384,9 +402,15 @@
 
 /* boot args and env */
 #define CONFIG_HOSTNAME			stm32f7-disco
-#define CONFIG_BOOTARGS			"stm32_platform=stm32f7-disco "	\
-					"console=ttyS5,115200 panic=10"
 
+#if defined(CONFIG_STM32_USART_CONSOLE_VCP)
+#define CONFIG_BOOTARGS			"stm32_platform=stm32f7-disco "	\
+					"console=ttyS0,115200 panic=10"
+#else
+#define CONFIG_BOOTARGS   		"stm32_platform=stm32f7-disco " \
+					"console=ttyS5,115200 panic=10"
+#endif
+						
 #define LOADADDR			"0xC0007FC0"
 
 #define REV_EXTRA_ENV							\
