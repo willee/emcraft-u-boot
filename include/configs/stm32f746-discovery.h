@@ -248,15 +248,15 @@
 #if defined(CONFIG_STM32_USART_CONSOLE_VCP)
 
 /* 
-* USART1, TX PA.9, RX PB.7 
-*/
-#define CONFIG_STM32_USART_PORT 1               /* USART1 */
+ * USART1, TX PA.9, RX PB.7
+ */
+#define CONFIG_STM32_USART_PORT 1		/* USART1 */
 
-#define CONFIG_STM32_USART_TX_IO_PORT   0       /* PORTA */
-#define CONFIG_STM32_USART_TX_IO_PIN    9       /* GPIO9 */
+#define CONFIG_STM32_USART_TX_IO_PORT	0	/* PORTA */
+#define CONFIG_STM32_USART_TX_IO_PIN	9	/* GPIO9 */
 
-#define CONFIG_STM32_USART_RX_IO_PORT   1       /* PORTB */
-#define CONFIG_STM32_USART_RX_IO_PIN    7       /* GPIO7 */
+#define CONFIG_STM32_USART_RX_IO_PORT	1	/* PORTB */
+#define CONFIG_STM32_USART_RX_IO_PIN	7	/* GPIO7 */
 
 #else
 
